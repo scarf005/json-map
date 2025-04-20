@@ -15,6 +15,13 @@ export type RecursiveJsonMap =
 
 /// Recursively parse JSON, preserving property order
 /// @returns a nested ES6 Map structure
+///
+/// ```ts
+/// import { assertEquals } from "jsr:@std/assert/equals"
+///
+/// const result = parse(`{ ".": 1, "$": 2, "1": 3 }`) // Map(3) { "." => 1, "$" => 2, "1" => 3 }
+/// assertEquals(result, new Map([[".", 1], ["$", 2], ["1", 3]]))
+/// ```
 #[wasm_bindgen(unchecked_return_type = "RecursiveJsonMap")]
 pub fn parse(string: JsValue) -> Result<JsValue, JsValue> {
   let string: String = string
@@ -33,6 +40,17 @@ pub fn parse(string: JsValue) -> Result<JsValue, JsValue> {
 
 /// Serialize given javascript object to a JSON string, preserving property order
 /// @returns a JSON string
+///
+/// ```ts
+/// import { assertEquals } from "jsr:@std/assert/equals"
+///
+/// const result = stringify(new Map([
+///      [".", 1],
+///      ["$", 2],
+///      ["1", 3],
+/// ]))
+/// assertEquals(result, '{".":1,"$":2,"1":3}')
+/// ```
 #[wasm_bindgen(unchecked_return_type = "string")]
 pub fn stringify(
   #[wasm_bindgen(unchecked_param_type = "unknown")] value: JsValue,
@@ -45,6 +63,17 @@ pub fn stringify(
 
 /// Serialize given javascript object to a JSON string, preserving property order
 /// @returns a pretty-formatted JSON string
+///
+/// ```ts
+/// import { assertEquals } from "jsr:@std/assert/equals"
+///
+/// const result = prettyPrint(new Map([
+///      [".", 1],
+///      ["$", 2],
+///      ["1", 3],
+/// ]))
+/// assertEquals(result, '{\n  ".": 1,\n  "$": 2,\n  "1": 3\n}')
+/// ```
 #[wasm_bindgen(unchecked_return_type = "string", js_name = "prettyPrint")]
 pub fn pretty_print(
   #[wasm_bindgen(unchecked_param_type = "unknown")] value: JsValue,

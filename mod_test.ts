@@ -34,7 +34,7 @@ Deno.test("stringify() preserves order", () => {
     obj,
   )
 })
-Deno.test("pretty_print() preserves order", () => {
+Deno.test("prettyPrint() preserves order", () => {
   assertEquals(
     prettyPrint(parse(obj)),
     `{
