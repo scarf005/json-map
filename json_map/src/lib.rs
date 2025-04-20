@@ -4,6 +4,9 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(typescript_custom_section)]
 const TS_APPEND_CONTENT: &'static str = r#"
+/**
+ * JSON structure, except that objects are represented as `Map` instead of `Object`.
+ */
 export type RecursiveJsonMap =
   | string
   | number

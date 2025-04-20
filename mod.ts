@@ -5,7 +5,7 @@
  *
  * ## Example
  *
- * ```
+ * ```ts
  * import { parse } from "jsr:@scarf/json-map"
  *
  * parse(`{ ".": 1, "$": 2, "1": 3 }`)
